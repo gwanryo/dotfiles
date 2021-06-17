@@ -9,7 +9,8 @@ set ruler laststatus=2 showcmd showmode
 set list listchars=trail:»,tab:»-
 set fillchars+=vert:\ 
 set wrap breakindent
-set encoding=ko_KR.UTF-8
+set encoding=utf-8
+set fileencoding=utf-8
 
 " Remove ALL autocommands for the current group. This prevents having the
 " autocommands defined twice (e.g., after sourcing the .vimrc file again).
