@@ -2,19 +2,21 @@
 " Sets          "
 """""""""""""""""
 filetype plugin indent on
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
+set smartindent autoindent number title cursorline
 set incsearch ignorecase smartcase hlsearch
 set ruler laststatus=2 showcmd showmode
 set list listchars=trail:»,tab:»-
 set fillchars+=vert:\ 
 set wrap breakindent
 set encoding=utf-8
-set number
-set title
 
 """""""""""""""""
 " Shortcuts     "
 """""""""""""""""
+" Save
+nnoremap <silent> <C-S> :w<cr>
+
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 " easier window navigation
@@ -45,8 +47,14 @@ call plug#begin()
   " devicons
   Plug 'ryanoasis/vim-devicons'
   " airline
-  Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  " Tag appender
+  Plug 'Raimondi/delimitMate
+  " Runner
+  Plug 'skywind3000/asyncrun.vim'
+  " Lint
+  Plug 'dense-analysis/ale'
 call plug#end()
 
 """""""""""""""""
@@ -84,8 +92,36 @@ let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
 let g:airline_section_warning = ''
 """""""""""""""
 
+""" delimitMate """
+let g:delimitMate_autoclose = 1
+let g:delimitMate_matchpairs = "(:),[:],{:},<:>"
+let g:delimitMate_jump_expansion = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_cr = 2
+let g:delimitMate_expand_inside_quotes = 1
+"""""""""""""""""""
+
+""" Asyncrun """
+" open quickfix window automatically when AsyncRun is executed
+" set the quickfix window 6 lines height.
+let g:asyncrun_open = 6
+
+" ring the bell to notify you job finished
+let g:asyncrun_bell = 1
+
+" F10 to toggle quickfix window
+nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+""""""""""""""""
+
+""" Ale """
+let g:ale_lint_on_save = 1
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+let g:ale_statusline_format =[' %d E ', ' %d W ', '']
+"""""""""""
+
 """""""""""""""""
-" Plugin Config "
+" Global Config "
 """""""""""""""""
 """ Indent """
 augroup vimrc-javascript
