@@ -11,6 +11,10 @@ set fillchars+=vert:\
 set wrap breakindent
 set encoding=utf-8
 
+" Remove ALL autocommands for the current group. This prevents having the
+" autocommands defined twice (e.g., after sourcing the .vimrc file again).
+autocmd!
+
 """""""""""""""""
 " Shortcuts     "
 """""""""""""""""
@@ -34,6 +38,16 @@ noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gll :Gpull<CR>
 noremap <Leader>gd :Gvdiff<CR>
+
+" Asyncrun
+augroup vimrcCompileMap
+  autocmd FileType c noremap <silent> <C-b> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType c noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) -mode=4 "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType cpp noremap <silent> <C-b> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType cpp noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) -mode=4 "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType python map <F5> :AsyncRun -mode=4 -raw python % <cr>
+  autocmd FileType javascript map <F5> :AsyncRun -mode=4 -raw node % <cr>
+augroup END
 
 """""""""""""""""
 " Plugins       "
