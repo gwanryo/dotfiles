@@ -21,3 +21,7 @@ mkdir -p ~/.config/nvim
 ln -sf $BASE/coc-settings.json ~/.config/nvim/coc-settings.json
 
 vim +PlugInstall +qall
+
+# fonts
+curl -fLo ~/.local/share/fonts/D2CodingLigatureNerdMono.ttf --create-dirs https://github.com/gwanryo/d2coding-nerd/raw/main/D2CodingLigatureNerdMono.ttf
+fc-cache -f -v
