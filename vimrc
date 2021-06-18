@@ -48,11 +48,11 @@ noremap <Leader>gd :Gvdiff<CR>
 " Asyncrun
 augroup vimrcCompileMap
   autocmd FileType c noremap <silent> <C-b> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-  autocmd FileType c noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) -mode=4 "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType c noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) -mode=term "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
   autocmd FileType cpp noremap <silent> <C-b> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-  autocmd FileType cpp noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) -mode=4 "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
-  autocmd FileType python map <F5> :AsyncRun -mode=4 -raw python3 % <cr>
-  autocmd FileType javascript map <F5> :AsyncRun -mode=4 -raw node % <cr>
+  autocmd FileType cpp noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) -mode=term "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+  autocmd FileType python map <F5> :AsyncRun -mode=term -raw python3 %
+  autocmd FileType javascript map <F5> :AsyncRun -mode=term -raw node %
 augroup END
 
 """""""""""""""""
@@ -75,6 +75,7 @@ call plug#begin()
   Plug 'skywind3000/asyncrun.vim'
   " Lint
   Plug 'dense-analysis/ale'
+  Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 """""""""""""""""
@@ -139,6 +140,12 @@ let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_statusline_format =[' %d E ', ' %d W ', '']
 """""""""""
+
+""" jedi-vim """
+" let g:jedi#show_call_signatures=0
+" let g:jedi#popup_select_first="0"
+" let g:jedi#force_py_version=3
+""""""""""""""""
 
 """""""""""""""""
 " Global Config "
