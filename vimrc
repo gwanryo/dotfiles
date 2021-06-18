@@ -22,13 +22,18 @@ autocmd!
 " Save
 nnoremap <silent> <C-S> :w<cr>
 
+" NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>
 
-" easier window navigation
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+" Page navigation
+nnoremap <silent> <A-Up> <C-u>
+nnoremap <silent> <A-Down> <C-d>
+
+" Easier window navigation
+nmap <C-Up> <C-w>h
+nmap <C-Left> <C-w>j
+nmap <C-Right> <C-w>k
+nmap <C-Down> <C-w>l
 
 " Git
 noremap <Leader>gs :Gstatus<CR>
