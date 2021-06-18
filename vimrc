@@ -26,14 +26,14 @@ nnoremap <silent> <C-S> :w<cr>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Page navigation
-nnoremap <A-Up> <C-u>
-nnoremap <A-Down> <C-d>
+nnoremap <C-Up> <C-u>
+nnoremap <C-Down> <C-d>
 
 " Easier window navigation
-nnoremap <C-Left> <C-w>h
-nnoremap <C-Up> <C-w>j
-nnoremap <C-Down> <C-w>k
-nnoremap <C-Right> <C-w>l
+nnoremap <A-Left> <C-w>h
+nnoremap <A-Up> <C-w>j
+nnoremap <A-Down> <C-w>k
+nnoremap <A-Right> <C-w>l
 
 " Git
 noremap <Leader>gs :Gstatus<CR>
