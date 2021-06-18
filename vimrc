@@ -12,10 +12,6 @@ set wrap breakindent
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Remove ALL autocommands for the current group. This prevents having the
-" autocommands defined twice (e.g., after sourcing the .vimrc file again).
-autocmd!
-
 """""""""""""""""
 " Shortcuts     "
 """""""""""""""""
@@ -47,6 +43,7 @@ noremap <Leader>gd :Gvdiff<CR>
 
 " Asyncrun
 augroup vimrcCompileMap
+  autocmd!
   autocmd FileType c noremap <silent> <C-b> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
   autocmd FileType c noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) -mode=term "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
   autocmd FileType cpp noremap <silent> <C-b> :AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
