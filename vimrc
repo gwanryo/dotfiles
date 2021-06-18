@@ -70,7 +70,7 @@ call plug#begin()
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   " Tag appender
-  Plug 'Raimondi/delimitMate
+  Plug 'Raimondi/delimitMate'
   " Runner
   Plug 'skywind3000/asyncrun.vim'
   " Lint
