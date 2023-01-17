@@ -22,11 +22,23 @@ ln -sf $BASE/coc-settings.json ~/.config/nvim/coc-settings.json
 
 vim +PlugInstall +qall
 
+# change computer name in MacOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    sudo scutil --set ComputerName kan
+fi
+
 # fonts
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install fontconfig
+fi
 curl -fLo ~/.local/share/fonts/D2CodingLigatureNerdMono.ttf --create-dirs https://github.com/gwanryo/d2coding-nerd/raw/main/D2CodingLigatureNerdMono.ttf
 fc-cache -f -v
 
 # neovim
 python3 -m pip install pynvim
 npm install -g neovim
-gem install neovim
+if [[ "$OSTYPE" != "darwin"* ]]; then
+    gem install neovim
+fi
+
+ln -sf $BASE/zshrc ~/.zshrc
