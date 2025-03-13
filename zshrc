@@ -70,13 +70,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+
+PROMPT=$PROMPT'$(kube_ps1) '
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -101,3 +103,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ls="ls -al"
+alias kt="git diff --staged --name-only --line-prefix=\`git rev-parse --show-toplevel\`/ | grep '\.kt[s\"]\?$' | xargs ktlint -F"
+eval "$(gh copilot alias -- zsh)"
