@@ -104,4 +104,3 @@ PROMPT=$PROMPT'$(kube_ps1) '
 
 alias ls="ls -al"
 alias kt="git diff --staged --name-only --line-prefix=\`git rev-parse --show-toplevel\`/ | grep '\.kt[s\"]\?$' | xargs ktlint -F"
-eval "$(gh copilot alias -- zsh)"
