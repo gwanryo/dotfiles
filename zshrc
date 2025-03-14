@@ -25,11 +25,11 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 1
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -93,6 +93,9 @@ PROMPT=$PROMPT'$(kube_ps1) '
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# Reload autocomplete
+autoload -Uz compinit && compinit
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -104,3 +107,9 @@ PROMPT=$PROMPT'$(kube_ps1) '
 
 alias ls="ls -al"
 alias kt="git diff --staged --name-only --line-prefix=\`git rev-parse --show-toplevel\`/ | grep '\.kt[s\"]\?$' | xargs ktlint -F"
+
+# kubectl alias, autocomplete
+alias k="kubectl"
+source <(kubectl completion zsh)
+compdef __start_kubectl k
+
